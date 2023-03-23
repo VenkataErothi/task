@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset=utf-8/>
+    <title>HTML FORM</title>
+  </head>
+ 	<body>
+   <form>
+      <table cellpadding="2" width="20%" align="center" cellspacing="2">
+        <tr>
+          <td colspan=2>
+            <center><font size="3"><b>Student Details</b></font></center>
+          </td>
+        </tr>
+          <tr>
+            <td><label for="name"> Name:</label></td>
+            <td><input type="text" name="text" id="name"></td>
+            </tr>
+            <tr>
+             <td><label>Age:</label></td>
+            <td><input type="number" name="age" id="age"></td>
+            </tr>
+            <tr>
+            <td><label> Address:</label></td>
+            <td><input type="text" name="personaladdress"id="address"></td>
+            </tr>
+            <tr>
+            <td><label>Gender:</label></td>
+            <td>
+                <input type="radio" name="gender" id="male" value="male">Male
+                <input type="radio" name="gender" id="female" value="female">Female
+             </td>
+            </tr>
+            <tr>
+            <td>Education:</td>
+            <td><input type="checkbox" name="education" id="education" value="High School" class="education" />High School</td>
+            </tr> 
+            <td></td><td><input type="checkbox" name="education"id="education1" value="Diploma" class="education"/>Diploma</td>
+            <tr>
+              <td></td><td><input type="checkbox" name="education" id="education2" value="Degree" class="education">Degree</td></tr>
+            <tr>
+              <td></td><td><input type="checkbox" name="education" id="education3" value="Post Grad" / class="education">Post Grad</td></tr>
+            <tr>
+              <td></td><td><input type="checkbox" name="education" id="education4" value="phd" class="education"/>phd</td></tr> 
+            <tr>
+              <td><label>Phone</label></td>
+              <td><input type="number" name="phone" id="phone">  </td>
+            </tr>
+            <tr>
+          <td><label for="state">State:</label></td>
+          <td><select id="state">
+            <option value="">select</option>
+            <option value="Andhra Pradesh">ANDHRA PRADESH</option>
+            <option value="Kerala">KERALA</option>
+            <option value="Mumbai">MUMBAI</option>
+            <option value="New Delhi">NEW DELHI</option>
+            <option value="Telangana">TELANGANA</option>
+          </select>
+        </tr>
+            <tr>
+            <td><label for="city">City:</label> </td>
+            <td>
+            <select id="city">
+                <option value="">select</option>
+                <option value="Visakhapatnam">VISAKHAPATNAM</option>
+                <option value="Hyderabad">HYDERABAD</option>
+                <option value="Bangalore">BANGALORE</option>
+                <option value="Chennai">CHENNAI</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+        <td><label>Pincode:</label></td>
+        <td><input type="text" name="pincode" id="pincode"></td>
+      </tr>
+        <tr>
+          <td colspan="2">
+            <input type="reset" name="clear" value="Clear">
+            <input type="button" value="Submit"  onclick="submitFunction()">
+        </td>
+            </tr>
+            </table>
+          </form>
+            <script>
+              function submitFunction(){
+        var name = document.getElementById("name").value;
+        console.log(name);
+        var age = document.getElementById("age").value;
+        console.log(age);
+        var address = document.getElementById("address").value;
+        console.log(address);
+        var gender = document.querySelector('input[name="gender"]:checked').value;
+        console.log(gender);
+        var education = []
+        var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+
+        for (var i = 0; i < checkboxes.length; i++) {
+          education.push(checkboxes[i].value)
+        }
+
+        console.log(education);
+        var phone = document.getElementById("phone").value;
+        console.log(phone);
+        var state = document.getElementById("state").value;
+        console.log(state);
+        var city = document.getElementById("city").value;
+        console.log(city);
+        var pincode = document.getElementById("pincode").value;
+        console.log(pincode);
+      }
+       function formValidate() {
+        if (name.length <=0) {
+        alert("Name is required");
+        submitOk= "false";
+      }
+      if (age.length <= 0) {
+        alert("Age is required");
+        submitOk= "false";
+      }
+      if (address.length <= 0) {
+        alert("Address is required");
+        submitOk= "false";
+      }
+
+      if(gender=="male" || gender=="female")
+   {
+     alert ( "Choose Your Gender: Male or Female" );
+     return false;  
+      }
+      if (education.value == "-1") {
+        alert("choose your education");
+        submitOk= "false";
+      }
+      if (phone.length <10) {
+        alert("Phone is required");
+        submitOk= "false";
+      }
+      if (state.value =="state") {
+        alert("State is required");
+        submitOk= "false";
+      }
+      if (city.value =="city") {
+        alert("City is required");
+        submitOk= "false";
+      }
+      if (pincode.value <=0) {
+        alert("Pincode is required");
+        submitOk= "false";
+      }
+      if(submitOk =="false"){
+        return false;
+              }
+              return true;
+               }     
+ </script>
+  </body>
+        </html>
+               
+         
+      
+        
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   

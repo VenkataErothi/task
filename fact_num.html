@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<h1 id="title">Factorialize! </h1>
+ <input type="text" id="factortext" name= "factor">
+ <button onclick="factorial()"> Factorial</button>
+<p id="display"> </p>
+<script type="text/javascript">
+  function factorial(){  
+  var fact=1,n   
+  var n = document.getElementById("factortext").value; 
+   while(n>= 1) {
+    fact=fact*n;
+    n=n-1;
+   }   
+document.getElementById("display").innerHTML = "The factorial of the number is" + fact ; 
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

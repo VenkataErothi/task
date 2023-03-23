@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap  Data Table  with Modal Form</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+    *{
+        box-sizing: border-box;
+    }
+    /*body{
+        background-color:   #FFF0F5;
+    }*/
+    .table{
+        width: 100%;
+        border-collapse: collapse;
+       
+    }
+    tbody{
+        display: table-row-group;
+        vertical-align: middle;
+        border-color: inherit;
+    }
+    .table tbody tr td{
+        border: 1px solid #dee;
+    }
+    @media(max-width:768px){
+        .table thead{
+            display: none;
+        }
+        .table,.table tbody, .table tr, .table td{
+            display: block;
+            width: 100%;
+        }
+
+    .table tr{
+        margin-bottom: 15px;
+    }
+    .table tbody tr td{
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    .table td:before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: 600;
+        font-size: 14px;
+        text-align: left;
+        column-span: 6;
+    }
+    .form :before{
+        content: attr(label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: 600;
+        font-size: 14px;
+        text-align: left;
+    }
+}
+
+</style>
+</head>
+<body>
+<div class="table-responsive">
+<div class="container">
+<div class="col-md-12 text=left">
+<button class="btn btn-success addData" data-toggle="modal">ADD</button>
+</div>
+<div id="table">
+<table class="table table-striped table-hover">
+<thead>
+<tr>
+<th>Emp ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Address</th>
+<th>Phone</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="myTable">
+<tr>
+<td class="empIdval" data-label="Emp ID">9</td>
+<td class="nameval" data-label="Name">Thomas Hardy</td>
+<td class="emailval" data-label="Email">thomashardy@mail.com</td>
+<td class="addressval" data-label="Address">89 Chiaroscuro Rd, Portland, USA</td>
+<td class="phoneval" data-label="Phone">(171) 555-2222</td>
+<td class="actions" data-label="Actions">
+<a href='#edit'class="edit" data-toggle='modal'><i class='fa fa-pencil-square'></i></a>
+<a class='delete' data-toggle='modal'><i class='fa fa-trash'></i></a>
+</td>
+</tr>
+<tr>
+<td class="empIdval" data-label="Emp ID">7</td>
+<td class="nameval" data-label="Name">Dominique Perrier</td>
+<td class="emailval" data-label="Email">dominiqueperrier@mail.com</td>
+<td class="addressval" data-label="Address">Obere Str. 57, Berlin, Germany</td>
+<td class="phoneval" data-label="Phone">(313) 555-5735</td>
+<td class="actions" data-label="Actions">
+<a href="#edit" class="edit" data-toggle="modal"><i class="fa fa-pencil-square"></i></a>
+<a class="delete" data-toggle="modal"><i class="fa fa-trash"></i>
+</td>
+</tr>
+<tr>
+<td class="empIdval" data-label="Emp ID">6</td>
+<td class="nameval" data-label="Name">Maria Anders</td>
+<td class="emailval" data-label="Email">mariaanders@mail.com</td>
+<td class="addressval" data-label="Address">25, rue Lauriston, Paris, France</td>
+<td class="phoneval" data-label="Phone">(503) 555-9931</td>
+<td class="actions" data-label="Actions">
+<a href="#edit" class="edit" data-toggle="modal"><i class="fa fa-pencil-square"></i></a>
+<a class="delete" data-toggle="modal"><i class="fa fa-trash"></i></a>
+</td>
+</tr>
+<tr>
+<td class="empIdval" data-label="Emp ID">5</td>
+<td class="nameval" data-label="Name">Fran Wilson</td>
+<td class="emailval" data-label="Email">franwilson@mail.com</td>
+<td class="addressval" data-label="Address">C/ Araquil, 67, Madrid, Spain</td>
+<td class="phoneval" data-label="Phone">(204) 619-5731</td>
+<td class="actions" data-label="Actions">
+<a href="#edit" class="edit" data-toggle="modal"><i class="fa fa-pencil-square"></i></a>
+<a class="delete" data-toggle="modal"><i class="fa fa-trash"></i></a>
+</td>
+</tr>
+<tr>
+<td class="empIdval" data-label="Emp ID">4</td>
+<td class="nameval" data-label="Name">Martin Blank</td>
+<td class="emailval" data-label="Email">martinblank@mail.com</td>
+<td class="addressval" data-label="Address">Via Monte Bianco 34, Turin, Italy</td>
+<td class="phoneval" data-label="Phone">(480) 631-2097</td>
+<td class="actions" data-label="Actions">
+<a href="#edit" class="edit" data-toggle="modal"><i class="fa fa-pencil-square"></i></a>
+<a class="delete" data-toggle="modal"><i class="fa fa-trash"></i></a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="modal" id="addData" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Form</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Emp ID:</label>
+            <input type="text" name="empId" class="empId">
+        </div>
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" name="name" class="name">
+        </div>
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="text" name="email" class="email">
+        </div>
+        <div class="form-group">
+            <label>Address:</label>
+            <input type="text" name="address" class="address">
+        </div>
+        <div class="form-group">
+            <label>Phone:</label>
+            <input type="text" name="phone" class="phone">
+        </div>
+        <input type="hidden" id="hidden">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="save">Save changes</button>
+        <button type="button" class="btn btn-primary" id="update">Update changes</button>
+        <button type="button" class="btn btn-secondary closeForm" data-dismiss="modal">Close</button>
+      </div>
+  </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+     var current_edit_row_details = {};
+     $('.addData').click(function(){
+        $('.modal').show();
+        $('.empId,.name,.email,.address,.phone').val('');
+        $('#save').removeClass('hidden');
+        $('#update').addClass('hidden');    
+    });
+    $('#save').click(function(){
+        if($('.empId').val() != '' && $('.name').val() != '' && $('.email').val() != '' && $('.address').val() != '' && $('.phone').val() != ''){
+
+            $('.table tbody').append('<tr ><td class="empIdval" >'+$('.empId').val()+'</td><td class="nameval">'+$('.name').val()+'</td><td class="emailval">'+$('.email').val()+'</td><td class="addressval">'+$('.address').val()+'</td><td class="phoneval">'+$('.phone').val()+'</td><td><a href="#edit" class="edit" data-toggle="modal" ><i class="fa fa-pencil-square"></i></a>&nbsp;<a class="delete" data-toggle="modal"><i class="fa fa-trash"></i></a></td></tr>');
+            $('.closeForm').trigger('click');
+        };
+    });
+    $('#update').click(function(){
+        current_edit_row_details.current_row.remove();
+         if($('.empId').val() != '' && $('.name').val() != '' && $('.email').val() != '' && $('.address').val() != '' && $('.phone').val() != ''){
+
+            $('.table tbody').append('<tr ><td class="empIdval" data-label="Emp ID">'+$('.empId').val()+'</td><td class="nameval" data-label="Name">'+$('.name').val()+'</td><td class="emailval" data-label="Email">'+$('.email').val()+'</td><td class="addressval" data-label="Address">'+$('.address').val()+'</td><td class="phoneval"  data-label="Phone">'+$('.phone').val()+'</td><td><a href="#edit" class="edit" data-toggle="modal" ><i class="fa fa-pencil-square"></i></a>&nbsp;<a class="delete" data-toggle="modal"><i class="fa fa-trash"></i></a></td></tr>');
+            $('.closeForm').trigger('click');
+          }
+        });
+
+      $('.closeForm,.close').click(function(){
+        $('.modal').hide();
+    });
+    
+    $(document).on('click','.edit',function(){
+        $('.modal').show();
+        $('#update').removeClass('hidden');
+        $('#save').addClass('hidden');
+        $('.empId').val($(this).closest("tr").find('.empIdval').text());
+        console.log($(this).closest("tr").find('.empIdval').text());
+        // empid = $(this).closest("tr").find('.empIdval').text();
+        $('.name').val($(this).closest("tr").find('.nameval').text());
+        $('.email').val($(this).closest("tr").find('.emailval').text());
+        $('.address').val($(this).closest("tr").find('.addressval').text());
+        $('.phone').val($(this).closest("tr").find('.phoneval').text());
+
+        current_edit_row_details.empId = $(this).closest("tr").find('.empIdval').text();
+        current_edit_row_details.name = $(this).closest("tr").find('.nameval').text();
+        current_edit_row_details.email = $(this).closest("tr").find('.emailval').text();
+        current_edit_row_details.address = $(this).closest("tr").find('.addressval').text();
+        current_edit_row_details.phone = $(this).closest("tr").find('.phoneval').text();
+        current_edit_row_details.current_row = $(this).closest('tr');
+        
+    });
+    $(document).on('click','.delete',function(){
+        $(this).closest("tr").remove();
+    });
+</script>
+</body>
+</html>

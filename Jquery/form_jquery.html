@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>JQuery form</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"> </script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"> </script>  
+<script>  
+ $(document).ready (function () { 
+ $("#submit").click (function () { 
+    var name =$('#name').val();
+    console.log(name);
+      var age =$('#age').val();
+      console.log(age);
+      var address=$('#address').val();
+      console.log(address);
+      var gender= $('input[name="gender"]:checked').val();
+      console.log(gender);
+      var education=[];
+      $("input:checkbox[name='education']:checked").each(function(){    
+        education.push($(this).val());        
+      });
+      console.log(education);
+      var phone =$('#phone').val();
+      console.log(phone);
+      var state =$('#state').val();
+      console.log(state);
+      var city =$('#city').val();
+      console.log(city);
+      var pincode=$('#pincode').val();
+      console.log(pincode);
+    });
+    })
+ </script>   
+  </head>
+  <body>
+   <form class="stdform"id="stdForm"  action="" method="post">
+      <table cellpadding="2" width="20%" align="center" cellspacing="2">
+        <tr>
+          <td colspan=2>
+            <center><font size="3"><b>Student Details</b></font></center>
+          </td>
+        </tr>
+          <tr>
+            <td><label for="name"> Name:</label></td>
+            <td><input type="text" name="text" id="name"></td>
+            </tr>
+            <tr>
+             <td><label>Age:</label></td>
+            <td><input type="number" name="age" id="age"></td>
+            </tr>
+            <tr>
+            <td><label> Address:</label></td>
+            <td><input type="text" name="personaladdress"id="address"></td>
+            </tr>
+            <tr>
+            <td><label>Gender:</label></td>
+            <td>
+                <input type="radio" name="gender" id="gender" value="male">Male
+                <input type="radio" name="gender" id="gender" value="female">Female
+             </td>
+            </tr>
+            <tr>
+            <td>Education:</td>
+            <td><input type="checkbox" name="education" id="education" value="High School" />High School</td>
+            </tr> 
+            <td></td><td><input type="checkbox" name="education"id="education1" value="Diploma" />Diploma</td>
+            <tr>
+              <td></td><td><input type="checkbox" name="education" id="education2" value="Degree">Degree</td></tr>
+            <tr>
+              <td></td><td><input type="checkbox" name="education" id="education3" value="Post Grad" />Post Grad</td></tr>
+            <tr>
+              <td></td><td><input type="checkbox" name="education" id="education4" value="phd" />phd</td></tr> 
+            <tr>
+              <td><label>Phone</label></td>
+              <td><input type="number" name="phone" id="phone">  </td>
+            </tr>
+            <tr>
+          <td><label for="state">State:</label></td>
+          <td><select id="state">
+            <option value="">select</option>
+            <option value="Andhra Pradesh">ANDHRA PRADESH</option>
+            <option value="Kerala">KERALA</option>
+            <option value="Mumbai">MUMBAI</option>
+            <option value="New Delhi">NEW DELHI</option>
+            <option value="Telangana">TELANGANA</option>
+          </select>
+        </tr>
+            <tr>
+            <td><label for="city">City:</label> </td>
+            <td>
+            <select id="city">
+                <option value="">select</option>
+                <option value="Visakhapatnam">VISAKHAPATNAM</option>
+                <option value="Hyderabad">HYDERABAD</option>
+                <option value="Bangalore">BANGALORE</option>
+                <option value="Chennai">CHENNAI</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+        <td><label>Pincode:</label></td>
+        <td><input type="text" name="pincode" id="pincode"></td>
+      </tr>
+        <tr>
+          <td colspan="2">
+            <input type="reset" name="clear" value="Clear">
+            <!-- <button>Submit</button> -->
+            <input type="button" id="submit"value="Submit" >
+        </td>
+            </tr>
+            </table>
+          </form>
+            
+  </body>
+        </html>
+    
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

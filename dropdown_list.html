@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title> Dropdown Country, State, City Using JavaScript</title>
+        <style>
+            .dropDown{
+                border: 1px solid ;
+                border-radius: 4px;
+                padding: 20px;     
+            }
+            .lists {
+                margin-bottom: 20px;  
+            }
+        </style>
+    </head>
+    <body>
+        <form class="dropDown List">
+            <div class="lists">
+                <h1>DropDownList</h1>
+                <label>Select Country:</label>
+                <select name="country" id="countryList">
+                    <option value="" selected="selected">Select Country</option>
+                </select>
+            </div>
+            <div class="lists">
+                <label>Select State:</label>
+                <select name="state" id="stateList">
+                    <option value="" selected="selected">Select State</option>
+                </select>
+            </div>
+            <div class="lists">
+                <label>Select City:</label>
+                <select name="city" id="cityList">
+                    <option value="" selected="selected">Select City</option>
+                </select>
+                <br><br><br>
+                <input type="reset" id="Reset" value="Reset" onclick="myFunction()">
+            </div>
+        </form>
+        <script>
+            var dropDown= {  
+                India: {
+                    Andhrapradesh:["Visakhapatnam","Vizianagaram","Tirupati"],
+                    Telangana:["Hyderabad","Warangal","Nizamabad"],
+                    Maharashtra: ["Mumbai", "Pune", "Nagpur"],
+                    TamilNadu: ["Chennai", "Madurai"],
+                    Karnataka: ["Bangalore", "Mangalore"],
+                },
+                Canada: {
+                    Alberta: ["Calgary", "Edmonton", "Red Deer"],
+                    BritishColumbia: ["Vancouver","Victoria", "Kelowna"],
+                    Manitoba: ["Winnipeg", "Brandon","Winkler"],
+                },
+                Germany: {
+                    Bavaria: ["Munich", "Nuremberg"],
+                    NorthRhine: ["Cologne", "Düsseldorf"],
+                },
+                USA: {
+                    California: ["Los Angeles", "San Diego", "Sacramento"],
+                    Texas: ["Houston", "Austin"],
+                    Florida: ["Miami", "Orlando", "Tampa"],
+                },
+            };
+             window.onload=function () {
+                var countryList = document.getElementById("countryList"),
+                  stateList = document.getElementById("stateList"),
+                 cityList = document.getElementById("cityList");
+
+                 for(var country in dropDown) {
+                    countryList.options[countryList.options.length] = new Option(country, country,country);
+                }
+                countryList.onchange = function () {
+                    stateList.length = 1;
+                    cityList.length = 1;
+                    if (this.selectedIndex < 1) return;
+                    for (var state in dropDown[this.value]) {
+                        stateList.options[stateList.options.length] = new Option(state, state,state);
+                    }
+                };
+                countryList.onchange();
+                stateList.onchange = function () {
+                    cityList.length = 1;
+                    if (this.selectedIndex < 1) return;
+                    var city = dropDown[countryList.value][this.value];
+                    for (var i = 0; i < city.length; i++) {
+                        cityList.options[cityList.options.length] = new Option(city[i], city[i],city[i]);
+                    }
+                }
+                };
+                function myFunction(){
+                    document.getElementById('countryList').selectedIndex = 0;
+                }
+                
+                
+                 
+            
+
+        </script>
+ 
+       
+    </body>
+</html>
